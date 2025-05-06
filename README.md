@@ -6,8 +6,9 @@ Repositório oficial do projeto **AURA**, desenvolvido como parte da disciplina 
 
 ## 🧠 Sobre o Projeto
 
-O projeto **AURA** tem como objetivo utilizar tecnologia para promover **inovação sustentável** e fortalecer a infraestrutura de maneira acessível, prática e eficaz. A iniciativa foca no desenvolvimento de soluções tecnológicas que possam ser aplicadas em contextos sociais reais, com impacto positivo para a comunidade e alinhadas à Agenda 2030 da ONU.
+O **AURA** é um **e-commerce de roupas usadas em bom estado**, idealizado como um brechó online acessível, sustentável e inovador. A proposta é incentivar o consumo consciente, reduzir o desperdício têxtil e democratizar o acesso à moda por meio da tecnologia.
 
+Com uma plataforma digital intuitiva e inclusiva, o AURA conecta pessoas interessadas em doar e comprar roupas usadas de qualidade, promovendo um modelo de negócio circular e sustentável.
 ---
 
 ## 🎯 ODS Alvo
@@ -45,27 +46,6 @@ Plataforma utilizada para gerenciar tarefas, sprints e organização geral do de
 
 - **Link de Acesso**:  
   [https://trello.com/b/4jOAuD2z/projeto-aps](https://trello.com/b/4jOAuD2z/projeto-aps)
-
----
-
-## 🚀 Como Contribuir
-
-1. Faça um fork do repositório.
-2. Crie uma branch:  
-   `git checkout -b minha-feature`
-3. Faça suas alterações e commit:  
-   `git commit -m 'Adiciona nova feature'`
-4. Envie para sua branch:  
-   `git push origin minha-feature`
-5. Abra um Pull Request.
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença [MIT](LICENSE), permitindo ampla utilização e modificação, desde que os devidos créditos sejam mantidos.
-
----
 
 ## 📫 Contato
 

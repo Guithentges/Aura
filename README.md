@@ -47,6 +47,18 @@ Plataforma utilizada para gerenciar tarefas, sprints e organização geral do de
 - **Link de Acesso**:  
   [https://trello.com/b/4jOAuD2z/projeto-aps](https://trello.com/b/4jOAuD2z/projeto-aps)
 
+<br>
+
+### 🗂️ Backlog do Produto
+
+<img src="https://github.com/Guithentges/Aura/blob/main/Backlog%20-%201.png">
+
+<br>
+
+<img src="https://github.com/Guithentges/Aura/blob/main/Backlog%20-%202.png">
+
+<br>
+
 ## 📫 Contato
 
 Para dúvidas, sugestões ou parcerias, entre em contato com a equipe através do repositório ou por meio dos canais disponibilizados no Trello.

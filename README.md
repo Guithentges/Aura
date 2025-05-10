@@ -49,6 +49,10 @@ Plataforma utilizada para gerenciar tarefas, sprints e organização geral do de
 
 <br>
 
+### Vídeo demonstrativo protótipo Lo-Fi
+Acesse aqui: https://www.youtube.com/watch?v=ZIac1Xdc2sI
+ 
+
 ### 🗂️ Backlog do Produto
 
 <img src="https://github.com/Guithentges/Aura/blob/main/Backlog%20-%201.png">

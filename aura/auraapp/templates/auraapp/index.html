@@ -6,6 +6,232 @@
     <title>Aura</title>
 </head>
 <body>
-    <h1>Hello world</h1>
+    <header>
+        <div class="title"><h1>Aura</h1></div>
+        <navbar>
+            <nav><a href="#">Início</a></nav>
+            <nav><a href="#">Categorias</a></nav>
+            <nav><a href="#">Featured</a></nav>
+            <nav><a href="#">Sobre</a></nav>
+            <nav><a href="#">Contato</a></nav>
+        </navbar>
+    </header>
+    <main>
+        <div class="secao1">
+            <button>Shop now</button>
+        </div>
+        <div class="secao2">
+            <div class="s2head">
+                <h2>Categorias de produtos</h2>
+            </div>
+            <div class="s2body">
+                <div class="categoria">
+                    <div class="img"><img src="../../static/bolsacategory.png" alt="Bolsa"></div>
+                    <p>Bags</p>
+                </div>
+                <div class="categoria">
+                    <div class="img"><img src="../../static/dress.png" alt=""></div>
+                    <p>Dresses</p>
+                </div>
+                <div class="categoria">
+                    <div class="img"><img src="../../static/shoe.png" alt=""></div>
+                    <p>Shoes</p>
+                </div>
+            </div>
+        </div>
+        <div class="secao3">
+            <div class="s3head">
+                <h2>Featured Products</h2>
+            </div>
+            <div class="s3body">
+                <div class="featured">
+                    <div class="img"></div>
+                    <p>Dress</p>
+                    <p>450$</p>
+                </div>
+                <div class="featured">
+                    <div class="img"></div>
+                    <p>Dress</p>
+                    <p>450$</p>
+                </div>
+                <div class="featured">
+                    <div class="img"></div>
+                    <p>Dress</p>
+                    <p>450$</p>
+                </div>
+            </div>
+        </div>
+        <div class="sobre">
+            <h2>Sobre Aura</h2>
+            <p>Texto sobre a marca</p>
+        </div>
+    </main>
+    <footer>
+        <div class="contato">
+            <h3>Contato</h3>
+            <p>contato@sla</p>
+            <p>139463298563</p>
+        </div>
+        <div class="icones">
+            <div class="icone">insta</div>
+            <div class="icone">wpp</div>
+            <div class="icone">github</div>
+        </div>
+    </footer>
 </body>
 </html>
+
+<style>
+
+    *{
+        padding: 0;
+        margin: 0;
+    }
+
+    header{
+        width: 100%;
+        height: 100px;
+        background-color: aqua;
+    }
+    .title{
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 2px solid black;
+        & h1{
+            font-size: 3rem;
+        }
+    }
+    navbar{
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    nav{
+        padding-inline: 1rem;
+        & a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+
+    .secao1{
+        height: 650px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid red;
+        background-image: url(../../static/capa.png);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        & button{
+            width: 100px;
+            border-radius: 5px;
+            background-color: blueviolet;
+            height: 50px;
+        }
+
+    }
+    .secao2{
+        height: 550px;
+        width: 100%;
+        border: 1px solid green;
+        display: flex;
+        flex-direction: column;
+    }
+    .s2head{
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .s2body{
+        width: 100%;
+        height: 500px;
+        border: 1px solid gold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .img{
+        width: 150px;
+        height: 150px;
+        background-color: red;
+        & img{
+            width: 100%;
+        }
+    }
+    .categoria{
+        width: 450px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        border: 1px solid blue;
+    }
+
+    .s3head{
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .s3body{
+        width: 100%;
+        height: 300px;
+        border: 1px solid gold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .featured{
+        width: 100px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid blue;
+    }
+
+    .sobre{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid blue;
+    }
+
+    .icones{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+    }
+    .icone{
+        padding-inline: 10px;
+    }
+</style>

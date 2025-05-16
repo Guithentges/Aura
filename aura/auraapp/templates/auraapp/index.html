@@ -9,55 +9,52 @@
     <header>
         <div class="title"><h1>Aura</h1></div>
         <navbar>
-            <nav><a href="#">Início</a></nav>
+            <nav><a href="{% url 'index' %}">Início</a></nav>
             <nav><a href="#">Categorias</a></nav>
-            <nav><a href="#">Featured</a></nav>
+            <nav><a href="#">Em Alta</a></nav>
             <nav><a href="#">Sobre</a></nav>
-            <nav><a href="#">Contato</a></nav>
+            <nav><a href="#footer">Contato</a></nav>
         </navbar>
     </header>
     <main>
         <div class="secao1">
-            <button>Shop now</button>
+            <button>Compre Agora</button>
         </div>
         <div class="secao2">
-            <div class="s2head">
+            <div class="shead">
                 <h2>Categorias de produtos</h2>
             </div>
-            <div class="s2body">
-                <div class="categoria">
-                    <div class="img"><img src="../../static/bolsacategory.png" alt="Bolsa"></div>
-                    <p>Bags</p>
+            <div class="sbody">
+                <div class="card">
+                    <div class="img"><img src="../../static/bolsacategory.png" alt=""></div>
+                    <p>Bolsas</p>
                 </div>
-                <div class="categoria">
+                <div class="card">
                     <div class="img"><img src="../../static/dress.png" alt=""></div>
-                    <p>Dresses</p>
+                    <p>Vestidos</p>
                 </div>
-                <div class="categoria">
+                <div class="card">
                     <div class="img"><img src="../../static/shoe.png" alt=""></div>
-                    <p>Shoes</p>
+                    <p>Sapatos</p>
                 </div>
             </div>
         </div>
         <div class="secao3">
-            <div class="s3head">
-                <h2>Featured Products</h2>
+            <div class="shead">
+                <h2>Produtos em alta</h2>
             </div>
-            <div class="s3body">
-                <div class="featured">
-                    <div class="img"></div>
-                    <p>Dress</p>
-                    <p>450$</p>
+            <div class="sbody">
+                <div class="card">
+                    <div class="img"><img src="../../static/Blazer.png" alt=""></div>
+                    <p>Blazer<br> 450R$</p>
                 </div>
-                <div class="featured">
-                    <div class="img"></div>
-                    <p>Dress</p>
-                    <p>450$</p>
+                <div class="card">
+                    <div class="img"><img src="../../static/Social.jpg" alt=""></div>
+                    <p>Camisa Social<br> 450R$</p>
                 </div>
-                <div class="featured">
-                    <div class="img"></div>
-                    <p>Dress</p>
-                    <p>450$</p>
+                <div class="card">
+                    <div class="img"><img src="../../static/fd64cea0-3ee1-4b73-9ba4-9200f9250fa8.jpg" alt=""></div>
+                    <p>Dress<br> 450R$</p>
                 </div>
             </div>
         </div>
@@ -66,7 +63,7 @@
             <p>Texto sobre a marca</p>
         </div>
     </main>
-    <footer>
+    <footer id="footer">
         <div class="contato">
             <h3>Contato</h3>
             <p>contato@sla</p>
@@ -86,12 +83,15 @@
     *{
         padding: 0;
         margin: 0;
+        background-color: black;
+        color: #fff;
     }
 
     header{
         width: 100%;
         height: 100px;
-        background-color: aqua;
+        background-color: black;
+        color: #fff;
     }
     .title{
         width: 100%;
@@ -99,7 +99,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid #fff;
         & h1{
             font-size: 3rem;
         }
@@ -116,7 +116,7 @@
         padding-inline: 1rem;
         & a{
             text-decoration: none;
-            color: black;
+            color: #fff;
         }
     }
 
@@ -125,35 +125,40 @@
         height: 650px;
         width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
         border: 1px solid red;
         background-image: url(../../static/capa.png);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         & button{
-            width: 100px;
+            position: relative;
+            left: 50px;
+            top: 400px;
+            width: 380px;
             border-radius: 5px;
-            background-color: blueviolet;
-            height: 50px;
+            background-color: black;
+            color: #fff;
+            height: 150px;
+            font-size: 2rem;
+            cursor: pointer;
         }
 
     }
     .secao2{
+        margin-top: 50px;
         height: 550px;
         width: 100%;
         border: 1px solid green;
         display: flex;
         flex-direction: column;
     }
-    .s2head{
+    .shead{
         height: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .s2body{
+    .sbody{
         width: 100%;
         height: 500px;
         border: 1px solid gold;
@@ -165,12 +170,11 @@
     .img{
         width: 150px;
         height: 150px;
-        background-color: red;
         & img{
             width: 100%;
         }
     }
-    .categoria{
+    .card{
         width: 450px;
         height: 450px;
         display: flex;
@@ -180,31 +184,6 @@
         border: 1px solid blue;
     }
 
-    .s3head{
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .s3body{
-        width: 100%;
-        height: 300px;
-        border: 1px solid gold;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-    }
-
-    .featured{
-        width: 100px;
-        height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid blue;
-    }
 
     .sobre{
         width: 100%;
@@ -217,12 +196,15 @@
 
     footer{
         width: 100%;
-        height: 200px;
+        height: 100px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         border: 1px solid blue;
+    }
+    .contato{
+        padding-left: 15px;
     }
 
     .icones{
@@ -230,6 +212,7 @@
         display: flex;
         flex-direction: row;
         justify-content: right;
+        padding-right: 15px;
     }
     .icone{
         padding-inline: 10px;

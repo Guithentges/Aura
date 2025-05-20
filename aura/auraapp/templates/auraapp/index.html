@@ -61,21 +61,23 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="div_footer"></div>
         <div class="sobre">
-            <h2>Sobre Aura</h2>
-            <p>Texto sobre a marca</p>
+            <h2 style="margin-bottom: 10px; margin-top: 10px;">Sobre a Aura</h2>
+            <p id="sobre_aura">A AURA é mais do que um loja de roupas online — é um movimento consciente de moda com propósito. Acreditamos no poder da reutilização e na beleza das peças que carregam histórias. 
+
+Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade e autenticidade. Seja para renovar seu guarda-roupa ou encontrar aquele item especial, a AURA conecta você a uma moda mais ética e inteligente — com praticidade, transparência e amor pelo planeta.</p>
         </div>
     </main>
     <footer id="footer">
         <div class="contato">
-            <h3>Contato</h3>
-            <p>contato@sla</p>
-            <p>139463298563</p>
+            <h3 style="margin-bottom: 5px;">Contato</h3>
+            <p style="margin-bottom: 3px;">faleconosco@aura.com.br</p>
+            <p>0800 087 1905</p>
         </div>
         <div class="icones">
-            <div class="icone">insta</div>
-            <div class="icone">wpp</div>
-            <div class="icone">github</div>
+            <a href="mailto:faleconosco@aura.com.br"><div class="icone fas fa-envelope" style="font-size: 25px; margin-right: 25px;"></div></a>
+            <a href="https://github.com/Guithentges/Aura" target="_blank"><div class="icone fab fa-github" style="font-size: 25px;"></div></a>
         </div>
     </footer>
 </body>
@@ -312,6 +314,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 10px;
     }
 
     footer{
@@ -322,6 +327,20 @@
         justify-content: space-between;
         align-items: center;
     }
+
+     .div_footer{
+        margin-top: 3px;
+        border-top: 4px solid #ccc;
+    }
+
+        #sobre_aura{
+        font-size: 18px;
+        line-height: 1.7;
+        color: #a3a2a2;
+        text-align: justify;
+        padding: 0 10px;
+    }
+    
     .contato{
         padding-left: 15px;
     }
@@ -333,7 +352,8 @@
         justify-content: right;
         padding-right: 15px;
     }
+    
     .icone{
-        padding-inline: 10px;
+        cursor: pointer;
     }
 </style>

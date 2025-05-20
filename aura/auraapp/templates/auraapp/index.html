@@ -10,7 +10,10 @@
 </head>
 <body>
     <header>
-        <div class="title"><h1>Aura</h1></div>
+        <div class="title"><h1>Aura</h1>
+        <div class="cart"><div class="cart-icon"></div><div class="cart-number"></div></div>
+        </div>
+        
         <navbar>
             <nav><a href="{% url 'index' %}">Início</a></nav>
             <nav><a href="#">Categorias</a></nav>
@@ -34,10 +37,6 @@
                     <p>{{ categoria.descricao }}</p>
                 </div>
                 {% endfor %}
-                <div class="categoria-card">
-  <h2>Masculino</h2>
-  <p>Explore nossa coleção premium para homens</p>
-</div>
             </div>
         </div>
         <div class="secao2">
@@ -78,6 +77,34 @@
 </html>
 
 <style>
+    .cart{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        right: 5px;
+        width: 100px;
+        height: 45px;
+        border-radius: 5px;
+        background-color: black;
+        border: 1px solid #fff;
+    }
+    .cart-icon{
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+    }
+    .cart-number{
+        display: flex;
+        align-items: center;
+        justify-content: center ;
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: black;
+        border: 1px solid #fff;
+    }
 
 
     *{

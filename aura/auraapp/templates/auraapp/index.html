@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
@@ -10,12 +11,16 @@
 </head>
 <body>
     <header>
-        <div class="title"><h1>Aura</h1>
-        <div class="cart"><div class="cart-icon"></div><div class="cart-number"></div></div>
+        <div class="title">
+            <h1>Aura</h1>
+            <a href="{% url 'ver_carrinho'%}" class="cart">
+                <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="cart-number">2</div>
+            </a>
         </div>
         
         <navbar>
-            <nav><a href="{% url 'index' %}">Início</a></nav>
+            <nav><a href="{% url 'home' %}">Início</a></nav>
             <nav><a href="#">Categorias</a></nav>
             <nav><a href="#">Em Alta</a></nav>
             <nav><a href="#">Sobre</a></nav>
@@ -51,7 +56,7 @@
                         <h3>{{produto.nome}}</h3>
                         <p>R$ {{produto.preco}}</p>
                     </div>
-                    <button>Adicionar ao Carrinho</button>
+                    <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
                 </div>
                 {% endfor %}
             </div>
@@ -77,6 +82,9 @@
 </html>
 
 <style>
+    a{
+        text-decoration: none;
+    }
     .cart{
         position: absolute;
         display: flex;
@@ -93,7 +101,11 @@
     .cart-icon{
         width: 20px;
         height: 20px;
-        background-color: #fff;
+        color: #fff;
+        & i{
+            color: #fff;
+            font-size: 24px;
+        }
     }
     .cart-number{
         display: flex;
@@ -101,9 +113,10 @@
         justify-content: center ;
         width: 30px;
         height: 30px;
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: black;
         border: 1px solid #fff;
+        font-size: 24px;
     }
 
 
@@ -274,7 +287,7 @@
     font-weight: bold;
   }
 
-  .product-card button {
+  .product-card a {
     width: 100%;
     background-color: #FFBF00;
     border: none;

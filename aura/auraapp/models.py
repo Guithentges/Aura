@@ -23,10 +23,15 @@ class Produto(models.Model):
     def __str__(self):
         return self.nome
     
+
 class Pedido(models.Model):
-    Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)  # ⚠️ Corrigido o nome para lowercase
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField(default=1)
+    finalizado = models.BooleanField(default=False)  # Serve para identificar se foi concluído (tipo status)
+
+    def subtotal(self):
+        return self.quantidade * self.produto.preco
 
     def __str__(self):
-        return self.produto
+        return f"{self.produto.nome} x{self.quantidade}"

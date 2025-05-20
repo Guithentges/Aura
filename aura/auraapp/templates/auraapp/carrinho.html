@@ -1,0 +1,16 @@
+<h2>Seu Carrinho</h2>
+{% if itens %}
+    <ul>
+        {% for item in itens %}
+            <li>
+                <strong>{{ item.produto.nome }}</strong> -
+                {{ item.quantidade }} x R$ {{ item.produto.preco }} =
+                <strong>R$ {{ item.subtotal }}</strong>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total: R$ {{ total }}</strong></p>
+    <a href="#">Finalizar Compra</a>
+{% else %}
+    <p>Seu carrinho está vazio.</p>
+{% endif %}

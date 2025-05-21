@@ -1,16 +1,114 @@
-<h2>Seu Carrinho</h2>
-{% if itens %}
-    <ul>
-        {% for item in itens %}
-            <li>
-                <strong>{{ item.produto.nome }}</strong> -
-                {{ item.quantidade }} x R$ {{ item.produto.preco }} =
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Aura</title>
+
+<div class="carrinho-container">
+    <h2>Seu Carrinho</h2>
+    
+    {% if itens %}
+        <ul class="carrinho-itens">
+    {% for item in itens %}
+        <li>
+            <span class="nome">{{ item.produto.nome }}</span>
+            <span class="detalhes">
+                <a href="{% url 'diminuir_quantidade' item.id %}" style="color:#f1c40f"><i class="fas fa-minus-circle"></i></a>
+                {{ item.quantidade }}
+                <a href="{% url 'aumentar_quantidade' item.id %}" style="color:#f1c40f"><i class="fas fa-plus-circle"></i></a>
+                × R$ {{ item.produto.preco }} = 
                 <strong>R$ {{ item.subtotal }}</strong>
-            </li>
-        {% endfor %}
-    </ul>
-    <p><strong>Total: R$ {{ total }}</strong></p>
-    <a href="#">Finalizar Compra</a>
-{% else %}
-    <p>Seu carrinho está vazio.</p>
-{% endif %}
+                <a href="{% url 'remover_item' item.id %}" style="color:red;"><i class="fas fa-trash-alt"></i></a>
+            </span>
+        </li>
+    {% endfor %}
+</ul>
+
+        
+        <p class="total"><strong>Total: R$ {{ total }}</strong></p>
+        <a class="finalizar-btn" href="#">Finalizar Compra</a>
+    {% else %}
+        <p class="vazio">Seu carrinho está vazio.</p>
+    {% endif %}
+</div>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    body {
+        background-color: #000;
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .carrinho-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #333;
+        border-radius: 8px;
+        background-color: #111;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #f1c40f;
+    }
+
+    .carrinho-itens {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .carrinho-itens li {
+        padding: 12px;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nome {
+        font-weight: 600;
+    }
+
+    .detalhes {
+        color: #ccc;
+    }
+
+    .total {
+        text-align: right;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #f1c40f;
+    }
+
+    .finalizar-btn {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background-color: #f1c40f;
+        color: #000;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+    .finalizar-btn:hover {
+        background-color: #e0b800;
+    }
+
+    .vazio {
+        text-align: center;
+        color: #aaa;
+    }
+</style>

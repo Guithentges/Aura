@@ -6,8 +6,9 @@ def home(request):
     produtos = Produto.objects.all()
     categorias = Categoria.objects.all()
     pedidos = Categoria.objects.all()
+    clientes = Cliente.objects.all()
 
-    return render(request, 'auraapp/index.html', {'produtos':produtos, 'categorias':categorias, 'pedidos':pedidos})
+    return render(request, 'auraapp/index.html', {'produtos':produtos, 'categorias':categorias, 'pedidos':pedidos, 'clientes':clientes})
 
 def adicionar_ao_carrinho(request, produto_id):
     cliente_id = request.session.get('cliente_id')  # Pegando cliente logado
@@ -35,6 +36,26 @@ def ver_carrinho(request):
 
     return render(request, 'auraapp/carrinho.html', {'itens': itens, 'total': total})
 
+def aumentar_quantidade(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    pedido.quantidade += 1
+    pedido.save()
+    return redirect('ver_carrinho')
+
+def diminuir_quantidade(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    if pedido.quantidade > 1:
+        pedido.quantidade -= 1
+        pedido.save()
+    else:
+        pedido.delete()  # Se chegou a 0, remove do carrinho
+    return redirect('ver_carrinho')
+
+def remover_item(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    pedido.delete()
+    return redirect('ver_carrinho')
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -43,7 +64,13 @@ def login_view(request):
         cliente = Cliente.objects.filter(email=email, senha=senha).first()
         if cliente:
             request.session['cliente_id'] = cliente.id
-            return redirect('ver_carrinho')
+            request.session['cliente_nome'] = cliente.nome
+            return redirect('home')
         else:
             return render(request, 'login.html', {'erro': 'Credenciais inválidas'})
     return render(request, 'auraapp/login.html')
+
+def logout_view(request):
+    # Remove todos os dados da sessão (incluindo id do cliente)
+    request.session.flush()
+    return redirect('home') 

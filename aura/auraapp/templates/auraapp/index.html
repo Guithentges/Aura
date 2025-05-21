@@ -13,6 +13,13 @@
     <header>
         <div class="title">
             <h1>Aura</h1>
+            <div class="user">
+                {% if request.session.cliente_id %}
+                <p>Bem-vindo, {{ request.session.cliente_nome }}</p>  <a href="{% url 'logout' %}">Sair</a>
+                {% else %}
+                <a href="{% url 'login' %}">Entrar</a>
+                {% endif %}
+            </div>
             <a href="{% url 'ver_carrinho'%}" class="cart">
                 <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
                 <div class="cart-number">2</div>
@@ -21,9 +28,9 @@
         
         <navbar>
             <nav><a href="{% url 'home' %}">Início</a></nav>
-            <nav><a href="#">Categorias</a></nav>
-            <nav><a href="#">Em Alta</a></nav>
-            <nav><a href="#">Sobre</a></nav>
+            <nav><a href="#categorias">Categorias</a></nav>
+            <nav><a href="#em-alta">Em Alta</a></nav>
+            <nav><a href="#sobre">Sobre</a></nav>
             <nav><a href="#footer">Contato</a></nav>
         </navbar>
     </header>
@@ -31,7 +38,7 @@
         <div class="secao1">
             <button>Compre Agora</button>
         </div>
-        <div class="secao2">
+        <div class="secao2" id="categorias">
             <div class="shead">
                 <h2>Categorias de produtos</h2>
             </div>
@@ -44,7 +51,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="secao2">
+        <div class="secao2" id="em-alta">
             <div class="shead">
                 <h2>Produtos em alta</h2>
             </div>
@@ -56,13 +63,15 @@
                         <h3>{{produto.nome}}</h3>
                         <p>R$ {{produto.preco}}</p>
                     </div>
-                    <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
+                    <div class="add-cart">
+                        <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
         <div class="div_footer"></div>
-        <div class="sobre">
+        <div class="sobre" id="sobre">
             <h2 style="margin-bottom: 10px; margin-top: 10px;">Sobre a Aura</h2>
             <p id="sobre_aura">A AURA é mais do que um loja de roupas online — é um movimento consciente de moda com propósito. Acreditamos no poder da reutilização e na beleza das peças que carregam histórias. 
 
@@ -87,6 +96,20 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     a{
         text-decoration: none;
     }
+    .user{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        left: 5px;
+        width: 150px;
+        height: 45px;
+        border-radius: 5px;
+        background-color: black;
+        border: 1px solid #fff;
+        transition: all 500ms ease;
+    }
     .cart{
         position: absolute;
         display: flex;
@@ -99,6 +122,19 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
         border-radius: 5px;
         background-color: black;
         border: 1px solid #fff;
+        transition: all 500ms ease;
+    }
+    .cart:hover{
+        border: 1px solid #FFBF00;
+        & i{
+            color: #FFBF00;
+            transition: all 500ms ease;
+        }
+        & .cart-number{
+            border: 1px solid #FFBF00;
+            color: #FFBF00;
+            transition: all 500ms ease;
+        }
     }
     .cart-icon{
         width: 20px;
@@ -147,7 +183,11 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
         border-bottom: 2px solid #fff;
         & h1{
             font-size: 3rem;
+            transition: all 500ms ease;
         }
+    }
+    .title h1:hover{
+        color: #FFBF00;
     }
     navbar{
         width: 100%;
@@ -229,6 +269,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    cursor: pointer;
   }
 
   .categoria-card:hover {
@@ -291,8 +332,10 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
 
   .product-card a {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #FFBF00;
-    border: none;
     color: #000;
     padding: 12px;
     font-weight: bold;
@@ -301,8 +344,15 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     cursor: pointer;
     transition: background-color 0.3s;
   }
+  .add-cart{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  .product-card button:hover {
+  .product-card a:hover {
     background-color: #fff;
   }
 

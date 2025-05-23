@@ -38,7 +38,10 @@
     </header>
     <main>
         <div class="secao1">
-            <button>Compre Agora</button>
+            <div class="background-image"> 
+                <img src="../../static/capa.png">
+                <h2 class="text-background">Encontre peças de qualidade, exclusivas e cheias de personalidade na Aura. Renove seu guarda-roupa sem pesar no orçamento! </h2>
+            </div>
         </div>
         <div class="secao2" id="categorias">
             <div class="shead">
@@ -184,7 +187,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     }
 
     header{
-        z-index: 1;
+        z-index: 999;
         position: fixed;
         width: 100%;
         height: 120px;
@@ -226,14 +229,10 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
         }
     }
     .secao1{
-        padding-top: 200px;
+        padding-top: 100px;
         height: 650px;
         width: 100%;
         display: flex;
-        background-image: url(../../static/capa.png);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
         & button{
             position: relative;
             left: 50px;
@@ -252,6 +251,27 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
             border: 1px solid #FFBF00;
         }
 
+    }
+    .background-image{
+        width: 100%;
+    }
+    .background-image img{
+        width: 100%;
+        z-index: 0;
+    }
+    .text-background{
+        position: absolute;
+        top: 400px;
+        z-index: 1;
+        background: none;
+        width: 600px;
+        text-align: left;
+        margin-left: 10px;
+        font-size: 30px;
+        transition: all 500ms ease;
+    }
+    .text-background:hover{
+        color: #FFBF00;
     }
     .secao2{
         margin-top: 50px;

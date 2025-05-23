@@ -15,9 +15,11 @@
             <h1>Aura</h1>
             <div class="user">
                 {% if request.session.cliente_id %}
-                <p>Bem-vindo, {{ request.session.cliente_nome }}</p>  <a href="{% url 'logout' %}">Sair</a>
+                <p>Bem-vindo, {{ request.session.cliente_nome }}</p><p>-</p>  <a href="{% url 'logout' %}">Sair</a>
                 {% else %}
                 <a href="{% url 'login' %}">Entrar</a>
+                <p>-</p>
+                <a href="{% url 'registrar' %}">Cadastrar</a>
                 {% endif %}
             </div>
             <a href="{% url 'ver_carrinho'%}" class="cart">
@@ -99,15 +101,30 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     .user{
         position: absolute;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-around;
+        gap: 10px;
         align-items: center;
         left: 5px;
-        width: 150px;
+        width: fit-content;
+        max-width: 400px;
         height: 45px;
+        padding-inline: 5px;
         border-radius: 5px;
-        background-color: black;
         border: 1px solid #fff;
+        background-color: black;
+        transition: all 500ms ease;
+    }
+    .user:hover{
+        border: 1px solid #FFBF00;
+        transition: all 500ms ease;
+        & p{
+            color: #FFBF00;
+            transition: all 500ms ease;
+        }
+    }
+    .user a:hover{
+        color: #FFBF00;
         transition: all 500ms ease;
     }
     .cart{

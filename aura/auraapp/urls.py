@@ -13,4 +13,5 @@ urlpatterns = [
     path('carrinho/remover/<int:pedido_id>/', views.remover_item, name='remover_item'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+    path('registrar/', views.register_view, name='registrar'),
 ]

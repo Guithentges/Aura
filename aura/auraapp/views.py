@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Produto, Categoria, Pedido, Cliente
+from .forms import ClienteForm
 
 def home(request):
 
@@ -74,3 +75,13 @@ def logout_view(request):
     # Remove todos os dados da sessão (incluindo id do cliente)
     request.session.flush()
     return redirect('home') 
+
+def register_view(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login') 
+    else:
+        form = ClienteForm()
+    return render(request, 'auraapp/registrar.html', {'form': form})

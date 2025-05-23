@@ -12,9 +12,9 @@ def home(request):
     return render(request, 'auraapp/index.html', {'produtos':produtos, 'categorias':categorias, 'pedidos':pedidos, 'clientes':clientes})
 
 def adicionar_ao_carrinho(request, produto_id):
-    cliente_id = request.session.get('cliente_id')  # Pegando cliente logado
+    cliente_id = request.session.get('cliente_id')  
     if not cliente_id:
-        return redirect('login')  # ou sua view de login
+        return redirect('login') 
     
     cliente = get_object_or_404(Cliente, id=cliente_id)
     produto = get_object_or_404(Produto, id=produto_id)
@@ -58,7 +58,7 @@ def remover_item(request, pedido_id):
     return redirect('ver_carrinho')
 
 
-def login_view(request):
+def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         senha = request.POST['senha']
@@ -68,15 +68,14 @@ def login_view(request):
             request.session['cliente_nome'] = cliente.nome
             return redirect('home')
         else:
-            return render(request, 'login.html', {'erro': 'Credenciais inválidas'})
+            return render(request, 'auraapp/login.html', {'erro': 'Credenciais inválidas'})
     return render(request, 'auraapp/login.html')
 
-def logout_view(request):
-    # Remove todos os dados da sessão (incluindo id do cliente)
+def logout(request):
     request.session.flush()
     return redirect('home') 
 
-def register_view(request):
+def cadastrar(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
         if form.is_valid():
@@ -84,4 +83,4 @@ def register_view(request):
             return redirect('login') 
     else:
         form = ClienteForm()
-    return render(request, 'auraapp/registrar.html', {'form': form})
+    return render(request, 'auraapp/cadastrar.html', {'form': form})

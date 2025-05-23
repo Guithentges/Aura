@@ -25,10 +25,10 @@ class Produto(models.Model):
     
 
 class Pedido(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)  # ⚠️ Corrigido o nome para lowercase
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)  
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField(default=1)
-    finalizado = models.BooleanField(default=False)  # Serve para identificar se foi concluído (tipo status)
+    finalizado = models.BooleanField(default=False)  
 
     def subtotal(self):
         return self.quantidade * self.produto.preco

@@ -19,7 +19,7 @@
                 {% else %}
                 <a href="{% url 'login' %}">Entrar</a>
                 <p>-</p>
-                <a href="{% url 'registrar' %}">Cadastrar</a>
+                <a href="{% url 'cadastrar' %}">Cadastrar</a>
                 {% endif %}
             </div>
             <a href="{% url 'ver_carrinho'%}" class="cart">
@@ -225,8 +225,6 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
             color: #FFBF00;
         }
     }
-
-
     .secao1{
         padding-top: 200px;
         height: 650px;
@@ -257,6 +255,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     }
     .secao2{
         margin-top: 50px;
+        padding-top: 120px;
         height: 550px;
         width: 100%;
         display: flex;
@@ -396,7 +395,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     }
 
      .div_footer{
-        margin-top: 3px;
+        margin-top: 3rem;
         border-top: 4px solid #ccc;
     }
 

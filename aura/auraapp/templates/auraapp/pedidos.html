@@ -1,16 +1,104 @@
-<h2>Pedidos Finalizados</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
 
-{% if pedidos %}
-    <ul>
-        {% for pedido in pedidos %}
-            <li>
-                <strong>{{ pedido.produto.nome }}</strong> -
-                Quantidade: {{ pedido.quantidade }} -
-                Total: R$ {{ pedido.produto.preco|floatformat:2 }} x {{ pedido.quantidade }} =
-                <strong>R$ {{ pedido.produto.preco|floatformat:2|add:pedido.quantidade }}</strong>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Você ainda não finalizou nenhum pedido.</p>
-{% endif %}
+
+<body>
+    <a href="{% url 'home' %}" class="sair">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="pedidos-container">
+        <h2>Pedidos Finalizados</h2>
+        {% if pedidos %}
+                {% for pedido in pedidos %}
+                    <div class="pedido-card">
+                        <strong>{{ pedido.produto.nome }}</strong>
+                        <div class="pedido-detalhes">
+                            <div class="pedido-descricao">
+                                <p>Quantidade</p> <strong>{{ pedido.quantidade }} </strong>    
+                            </div>
+                            <div class="pedido-descricao">
+                                <p>Valor</p> <strong>{{ pedido.produto.preco|floatformat:2 }} </strong>    
+                            </div>
+                        </div> 
+                        <h3>R$ {{ pedido.subtotal }}</h3>
+                    </div>
+                {% endfor %}
+        {% else %}
+            <p>Você ainda não finalizou nenhum pedido.</p>
+        {% endif %}
+    </div>
+</body>
+
+<style>
+    body{
+        background-color: black;
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+        font-size: 18px;
+    }
+    a{
+            text-decoration: none;
+        }
+        .sair{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 100px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #333;
+        border-radius: 5px;
+        transition: all 500ms ease;
+        & i{
+            color: #fff;
+            transition: all 500ms ease;
+        }
+    }
+    .sair:hover{
+        border: 1px solid #f1c40f;
+        & i{
+            color: #f1c40f;
+        }
+    }
+    .pedidos-container{
+        margin: 150px auto;
+        border: 1px solid #333;
+        width: 700px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .pedido-card{
+        border: 1px solid #fff;
+        padding: 10px;
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+    strong{
+        color: #f1c40f;
+    }
+    .pedido-descricao{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .pedido-detalhes{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 500px;
+    }
+</style>

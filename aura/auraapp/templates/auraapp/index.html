@@ -24,10 +24,10 @@
             </div>
             <div class="cart">
                 {% if request.session.cliente_id %}
-                <a href="{% url 'pedidos_finalizados' %}" class="cart-icon"><i class="fas fa-receipt"></i></a>
+                <a href="{% url 'pedidos_finalizados' %}" class="cart-icon"><i class="fas fa-receipt"></i><h3>Pedidos</h3></a>
                 <p>-</p>
                 {% endif %}
-                <a href="{% url 'ver_carrinho'%}" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+                <a href="{% url 'ver_carrinho'%}" class="cart-icon"><i class="fas fa-shopping-cart"></i><h3>Carrinho</h3></a>
             </div>
         </div>
         
@@ -138,10 +138,10 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     .cart{
         position: absolute;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         right: 5px;
-        width: 100px;
+        width: 150px;
         height: 45px;
         border-radius: 5px;
         background-color: black;
@@ -159,6 +159,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
         width: 40px;
         height: 40px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         color: #fff;
@@ -167,9 +168,16 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
             font-size: 24px;
             transition: all 500ms ease;
         }
+        & h3{
+            font-size: 10px;
+            transition: all 500ms ease;
+        }
     }
     .cart-icon:hover{
         & i{
+            color: #FFBF00;
+        }
+        & h3{
             color: #FFBF00;
         }
     }

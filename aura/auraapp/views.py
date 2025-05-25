@@ -84,3 +84,40 @@ def cadastrar(request):
     else:
         form = ClienteForm()
     return render(request, 'auraapp/cadastrar.html', {'form': form})
+
+
+def produto(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    return render(request, 'auraapp/produto.html', {'produto': produto})
+
+def categoria(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id)
+    produtos = Produto.objects.filter(categoria=categoria)
+    return render(request, 'auraapp/categoria.html', {
+        'categoria': categoria,
+        'produtos': produtos
+    })
+
+def finalizar_compra(request):
+    cliente_id = request.session.get('cliente_id')
+    if not cliente_id:
+        return redirect('login')
+
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    
+    pedidos = Pedido.objects.filter(cliente=cliente, finalizado=False)
+    for pedido in pedidos:
+        pedido.finalizado = True
+        pedido.save()
+
+    return redirect('home')
+
+def pedidos_finalizados(request):
+    cliente_id = request.session.get('cliente_id')
+    if not cliente_id:
+        return redirect('login')
+
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    pedidos = Pedido.objects.filter(cliente=cliente, finalizado=True)
+
+    return render(request, 'auraapp/pedidos.html', {'pedidos': pedidos})

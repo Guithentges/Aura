@@ -1,0 +1,16 @@
+<h2>Pedidos Finalizados</h2>
+
+{% if pedidos %}
+    <ul>
+        {% for pedido in pedidos %}
+            <li>
+                <strong>{{ pedido.produto.nome }}</strong> -
+                Quantidade: {{ pedido.quantidade }} -
+                Total: R$ {{ pedido.produto.preco|floatformat:2 }} x {{ pedido.quantidade }} =
+                <strong>R$ {{ pedido.produto.preco|floatformat:2|add:pedido.quantidade }}</strong>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Você ainda não finalizou nenhum pedido.</p>
+{% endif %}

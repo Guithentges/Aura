@@ -22,10 +22,13 @@
                 <a href="{% url 'cadastrar' %}">Cadastrar</a>
                 {% endif %}
             </div>
-            <a href="{% url 'ver_carrinho'%}" class="cart">
-                <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
-                <div class="cart-number">2</div>
-            </a>
+            <div class="cart">
+                {% if request.session.cliente_id %}
+                <a href="{% url 'pedidos_finalizados' %}" class="cart-icon"><i class="fas fa-receipt"></i></a>
+                <p>-</p>
+                {% endif %}
+                <a href="{% url 'ver_carrinho'%}" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+            </div>
         </div>
         
         <navbar>
@@ -49,10 +52,10 @@
             </div>
             <div class="sbody">
                 {% for categoria in categorias %}
-                <div class="categoria-card">
+                <a href="{% url 'categoria' categoria.id %}" class="categoria-card">
                     <h2>{{ categoria.nome }}</h2>
                     <p>{{ categoria.descricao }}</p>
-                </div>
+                </a>
                 {% endfor %}
             </div>
         </div>
@@ -63,7 +66,9 @@
             <div class="sbody">
                 {% for produto in produtos%}
                 <div class="product-card">
-                    <img src="{{produto.imagem.url}}" alt="">
+                    <a class="product-img" href="{% url 'produto' produto.id %}">
+                        <img src="{{produto.imagem.url}}" alt="">
+                    </a>
                     <div class="product-description">
                         <h3>{{produto.nome}}</h3>
                         <p>R$ {{produto.preco}}</p>
@@ -133,8 +138,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     .cart{
         position: absolute;
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         right: 5px;
         width: 100px;
@@ -146,35 +150,28 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     }
     .cart:hover{
         border: 1px solid #FFBF00;
-        & i{
-            color: #FFBF00;
-            transition: all 500ms ease;
-        }
-        & .cart-number{
-            border: 1px solid #FFBF00;
+        & p{
             color: #FFBF00;
             transition: all 500ms ease;
         }
     }
     .cart-icon{
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: #fff;
         & i{
             color: #fff;
             font-size: 24px;
+            transition: all 500ms ease;
         }
     }
-    .cart-number{
-        display: flex;
-        align-items: center;
-        justify-content: center ;
-        width: 30px;
-        height: 30px;
-        border-radius: 5px;
-        background-color: black;
-        border: 1px solid #fff;
-        font-size: 24px;
+    .cart-icon:hover{
+        & i{
+            color: #FFBF00;
+        }
     }
 
 
@@ -341,6 +338,13 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     transform: translateY(-5px);
     box-shadow: 0 6px 18px rgba(255, 191, 0, 0.2);
   }
+  .product-img{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .product-card img {
     width: 100%;
@@ -366,7 +370,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
     font-weight: bold;
   }
 
-  .product-card a {
+  .add-cart a {
     width: 100%;
     display: flex;
     align-items: center;

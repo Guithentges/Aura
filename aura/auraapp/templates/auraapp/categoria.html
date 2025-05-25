@@ -1,0 +1,147 @@
+<head>
+    <title>Aura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="{% url 'home' %}" class="sair">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <h2>{{ categoria.nome }}</h2>
+    
+    <div class="produtos-grid">
+        {% for produto in produtos %}
+        <div class="product-card">
+                    <a class="product-img" href="{% url 'produto' produto.id %}">
+                        <img src="{{produto.imagem.url}}" alt="">
+                    </a>
+                    <div class="product-description">
+                        <h3>{{produto.nome}}</h3>
+                        <p>R$ {{produto.preco}}</p>
+                    </div>
+                    <div class="add-cart">
+                        <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
+                    </div>
+                </div>
+        {% empty %}
+        <p>Nenhum produto encontrado nesta categoria.</p>
+        {% endfor %}
+    </div>
+
+</body>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+            padding: 2rem;
+        }
+        a{
+            text-decoration: none;
+        }
+        h2 {
+        text-align: center;
+        color: #FFD700;
+    }
+
+    .produtos-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center;
+        margin-top: 2rem;
+    }
+
+     .product-card {
+    width: 260px;
+    background-color: #1a1a1a; 
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(255, 191, 0, 0.2);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 350px;
+    display: block;
+    border-bottom: 1px solid #333;
+  }
+
+  .product-description {
+    padding: 16px;
+  }
+
+  .product-description h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .product-description p {
+    margin: 0;
+    font-size: 1rem;
+    color: #FFBF00; 
+    font-weight: bold;
+  }
+
+  .add-cart a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFBF00;
+    text-decoration: none;
+    color: #000;
+    padding: 12px;
+    font-weight: bold;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .add-cart{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-card a:hover {
+    background-color: #fff;
+  }
+  .sair{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 100px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #333;
+        border-radius: 5px;
+        transition: all 500ms ease;
+        & i{
+            color: #fff;
+            transition: all 500ms ease;
+        }
+    }
+    .sair:hover{
+        border: 1px solid #f1c40f;
+        & i{
+            color: #f1c40f;
+        }
+    }
+</style>

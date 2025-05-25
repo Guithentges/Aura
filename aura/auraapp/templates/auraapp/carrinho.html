@@ -3,7 +3,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <title>Aura</title>
-
+<a href="{% url 'home' %}" class="sair">
+    <i class="fas fa-arrow-left"></i>
+</a>
 <div class="carrinho-container">
     <h2>Seu Carrinho</h2>
     
@@ -26,7 +28,7 @@
 
         
         <p class="total"><strong>Total: R$ {{ total }}</strong></p>
-        <a class="finalizar-btn" href="#">Finalizar Compra</a>
+        <a class="finalizar-btn" href="{% url 'finalizar_compra' %}">Finalizar Compra</a>
     {% else %}
         <p class="vazio">Seu carrinho está vazio.</p>
     {% endif %}
@@ -100,15 +102,38 @@
         color: #000;
         font-weight: bold;
         border-radius: 6px;
-        transition: 0.3s;
+        transition: all 500ms ease;
     }
 
     .finalizar-btn:hover {
-        background-color: #e0b800;
+        background-color: #fff;
     }
 
     .vazio {
         text-align: center;
         color: #aaa;
+    }
+
+    .sair{
+        margin-top: 20px;
+        margin-left: 20px   ;
+        width: 100px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #333;
+        border-radius: 5px;
+        transition: all 500ms ease;
+        & i{
+            color: #fff;
+            transition: all 500ms ease;
+        }
+    }
+    .sair:hover{
+        border: 1px solid #f1c40f;
+        & i{
+            color: #f1c40f;
+        }
     }
 </style>

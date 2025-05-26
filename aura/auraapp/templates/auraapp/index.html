@@ -65,6 +65,7 @@
             </div>
             <div class="sbody">
                 {% for produto in produtos%}
+                {% if produto.emAlta %}
                 <div class="product-card">
                     <a class="product-img" href="{% url 'produto' produto.id %}">
                         <img src="{{produto.imagem.url}}" alt="">
@@ -77,6 +78,7 @@
                         <a href="{% url 'adicionar_ao_carrinho' produto.id %}">Adicionar ao Carrinho</a>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -165,7 +167,7 @@ Aqui, cada peça é escolhida com carinho, priorizando qualidade, originalidade 
         color: #fff;
         & i{
             color: #fff;
-            font-size: 24px;
+            font-size: 20px;
             transition: all 500ms ease;
         }
         & h3{

@@ -19,6 +19,7 @@ class Produto(models.Model):
     preco = models.DecimalField(max_digits=6, decimal_places=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     imagem = models.ImageField(upload_to='./static/', default='./static/blazer.png')
+    emAlta = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome

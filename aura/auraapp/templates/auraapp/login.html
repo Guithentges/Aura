@@ -3,7 +3,31 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta charset="UTF-8">
-    <style>
+    
+</head>
+<a href="{% url 'home' %}" class="sair">
+    <i class="fas fa-arrow-left"></i>
+</a>
+<body>
+
+    <div class="login-container">
+        <h2>Entrar</h2>
+
+        {% if erro %}
+            <div class="erro">{{ erro }}</div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+</body>
+</html>
+<style>
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #111;
@@ -19,6 +43,17 @@
             border-radius: 8px;
             width: 300px;
             box-shadow: 0 0 10px #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
         }
         h2 {
             text-align: center;
@@ -42,6 +77,11 @@
             border-radius: 4px;
             margin-top: 10px;
             cursor: pointer;
+            transition: all 500ms ease;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: #fff;
         }
         .erro {
             color: #f55;
@@ -76,26 +116,3 @@
         }
     }
     </style>
-</head>
-<a href="{% url 'home' %}" class="sair">
-    <i class="fas fa-arrow-left"></i>
-</a>
-<body>
-
-    <div class="login-container">
-        <h2>Entrar</h2>
-
-        {% if erro %}
-            <div class="erro">{{ erro }}</div>
-        {% endif %}
-
-        <form method="POST">
-            {% csrf_token %}
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
-
-</body>
-</html>

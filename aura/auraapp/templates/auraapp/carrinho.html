@@ -13,7 +13,7 @@
         <ul class="carrinho-itens">
     {% for item in itens %}
         <li>
-            <span class="nome">{{ item.produto.nome }}</span>
+            <span class="nome">{{ item.produto.nome }} - {{item.tamanho}}</span>
             <span class="detalhes">
                 <a href="{% url 'diminuir_quantidade' item.id %}" style="color:#f1c40f"><i class="fas fa-minus-circle"></i></a>
                 {{ item.quantidade }}

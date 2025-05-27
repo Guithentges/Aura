@@ -29,6 +29,7 @@ class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)  
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField(default=1)
+    tamanho = models.CharField(max_length=5, default='M')
     finalizado = models.BooleanField(default=False)  
 
     def subtotal(self):

@@ -22,6 +22,9 @@
                             <div class="pedido-descricao">
                                 <p>Valor</p> <strong>{{ pedido.produto.preco|floatformat:2 }} </strong>    
                             </div>
+                            <div class="pedido-descricao">
+                                <p>Tamanho</p> <strong>{{ pedido.tamanho }} </strong>    
+                            </div>
                         </div> 
                         <h3>R$ {{ pedido.subtotal }}</h3>
                     </div>
@@ -66,7 +69,7 @@
         }
     }
     .pedidos-container{
-        margin: 100px auto;
+        margin: 50px auto;
         border: 1px solid #333;
         width: 700px;
         display: flex;
@@ -85,13 +88,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 16px;
+        gap: 24px;
     }
     strong{
         color: #f1c40f;
     }
     .pedido-descricao{
         display: flex;
+        width: 33%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -99,8 +103,9 @@
     .pedido-detalhes{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+        gap: 1rem;
         width: 500px;
     }
 </style>

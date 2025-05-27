@@ -12,14 +12,17 @@ def home(request):
     return render(request, 'auraapp/index.html', {'produtos':produtos, 'categorias':categorias, 'pedidos':pedidos, 'clientes':clientes})
 
 def adicionar_ao_carrinho(request, produto_id):
-    cliente_id = request.session.get('cliente_id')  
+    cliente_id = request.session.get('cliente_id')
     if not cliente_id:
-        return redirect('login') 
-    
+        return redirect('login')
+
     cliente = get_object_or_404(Cliente, id=cliente_id)
     produto = get_object_or_404(Produto, id=produto_id)
+    tamanho = request.POST.get('tamanho', 'M')  # Tamanho padrão se não vier
 
-    pedido, criado = Pedido.objects.get_or_create(cliente=cliente, produto=produto, finalizado=False)
+    pedido, criado = Pedido.objects.get_or_create(
+        cliente=cliente, produto=produto, tamanho=tamanho, finalizado=False
+    )
 
     if not criado:
         pedido.quantidade += 1

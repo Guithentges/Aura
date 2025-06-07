@@ -51,11 +51,7 @@ Plataforma utilizada para gerenciar tarefas, sprints e organização geral do de
 
 ### 🗂️ Backlog do Produto
 
-<img src="https://github.com/Guithentges/Aura/blob/main/Backlog%20-%201.png">
-
-<br>
-
-<img src="https://github.com/Guithentges/Aura/blob/main/Backlog%20-%202.png">
+<img src="https://github.com/Guithentges/Aura/blob/main/Backlog.png">
 
 <br>
 
